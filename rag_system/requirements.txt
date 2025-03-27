@@ -1,0 +1,16 @@
+langchain
+langchain-elasticsearch
+elasticsearch
+google-generativeai
+streamlit
+pypdf
+python-dotenv
+pydantic
+langgraph
+sentence-transformers
+pillow
+numpy
+tqdm
+faiss-cpu
+watchdog
+requests
