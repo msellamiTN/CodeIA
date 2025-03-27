@@ -119,6 +119,25 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+rag_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag_app
+    ports:
+      - "8501:8501"
+    environment:
+      - ELASTICSEARCH_URL=https://es01:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=/app/certs/ca/ca.crt
+      - LLM_PROVIDER=ollama
+      - OLLAMA_URL=http://ollama:11434
+    volumes:
+      - ./data:/app/data
+      - certs:/app/certs:ro
+    depends_on:
+      - es01
 
 volumes:
   certs:
